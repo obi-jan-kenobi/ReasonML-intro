@@ -1,12 +1,20 @@
 type name = Name(string);
 type email = Email(string);
 
-type customer = {
+type person = {
   firstname: name, /* max 50 chars */
   middlename: option(name), /* optional */
   lastname: name, /* max 50 chars */
+};
+
+type contact = {
   email: email,
-  isEmailVerfied: bool /* reset wenn email sich aendert */
+  isEmailVerfied: bool, /* reset wenn email sich aendert */
+};
+
+type customer = {
+  name: person,
+  contact: contact,
 };
 
 let createEmail = (str) => {
