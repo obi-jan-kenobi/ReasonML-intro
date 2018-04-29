@@ -59,14 +59,20 @@ type deliveryChoice =
   | DeliveryAddress(address)
   | StoreDelivery(store);
 
+type orderId = OrderId(int);
+type currency = Euro(int) | Zloti(int);
 
+type order = {
+  id: orderId,
+  total: currency,
+  delivery: deliveryChoice
+};
 
 type customer = {
   name: person,
   contact,
   address,
-  store: address,
-  delivery: deliveryChoice,
+  orders: list(order),
 };
 
 let createEmail = str => {
